@@ -1,0 +1,62 @@
+{
+    "message": "Course found ...",
+    "courseFound": {
+        "disable": false,
+        "_id": "5d9c00cf2fa7480e4dc82dd9",
+        "title": "How to automate a working environment with vagrant and ansible",
+        "description": "A novie to ninja tutorial for environment automation.",
+        "createdAuthor": "Manager",
+        "chapters": [
+            {
+                "type": "chapterContents",
+                "disable": false,
+                "_id": "5d9c08ddc72d981213b3ab74",
+                "position": 0,
+                "title": "Chapter 1 - Initialisation",
+                "description": "The requirement setup to start this tutorial",
+                "createdAuthor": "Course Manager",
+                "contents": "The only requirement for this tutorial is a computer with internet connection, and this is it.",
+                "updatedAt": "2019-10-08T03:56:13.223Z",
+                "createdAt": "2019-10-08T03:56:13.223Z"
+            },
+            {
+                "type": "quiz",
+                "disable": false,
+                "_id": "5d9c1aa68786cb1ba39a8cde",
+                "position": 1,
+                "title": "Chapter 2 - Quiz for chapter 1",
+                "description": "Chapter 1's quiz",
+                "createdAuthor": "Course Manager",
+                "contents": [
+                    {
+                        "position": 0,
+                        "description": "What is the time complexity of merge sort?",
+                        "contents": [
+                            "O(n)",
+                            "O(n^2)",
+                            "O(nlogn)",
+                            "O(2n)"
+                        ],
+                        "answer": 2
+                    },
+                    {
+                        "position": 1,
+                        "description": "What is the most trending programming language in 2019?",
+                        "contents": [
+                            "Python",
+                            "c++",
+                            "JavaScript",
+                            "Java"
+                        ],
+                        "answer": 0
+                    }
+                ],
+                "updatedAt": "2019-10-08T05:12:06.966Z",
+                "createdAt": "2019-10-08T05:12:06.966Z"
+            }
+        ],
+        "createdAt": "2019-10-08T03:21:51.796Z",
+        "updatedAt": "2019-10-08T05:12:06.966Z",
+        "__v": 0
+    }
+}

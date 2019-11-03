@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "### Project --- 1. `git pull origin master` 2. go to the Aristotle/backend/sever-api 3. `npm update` 4. to start node server `npm start` 5. to test node server `npm test` --- ### How to install and run a MongoDB Server on Local There are two options:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "start": "node service.js",
+  "dependencies": {
+    "@hapi/joi": "^16.1.7",
+    "mongoose": "^5.7.5"
+  }
+}

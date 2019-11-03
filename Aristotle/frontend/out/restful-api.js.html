@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>DocStrap Source: restful-api.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cosmo.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top navbar-inverse">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">DocStrap</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="module-repositories_restful-api.html">repositories/restful-api</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: restful-api.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">/** 
+ * @module repositories/restful-api 
+ * */
+
+const Restful = require('./request-methods');
+const bcrypt = require('bcrypt');
+
+var BACKEND_API_ENDPOINT = process.env.BACKEND_API_ENDPOINT || "http://localhost:8000";
+console.log(BACKEND_API_ENDPOINT);
+const API_ROUTES = {
+    Course: "/api/courses",
+    User: "/api/users",
+    Department: "/api/departments",
+    Type: "/api/types",
+    Role: "/api/roles"
+};
+
+const PASS_SALT_ROUNDS = 5;
+
+const userRoute =  `${BACKEND_API_ENDPOINT}${API_ROUTES.User}`;
+const courseRoute = `${BACKEND_API_ENDPOINT}${API_ROUTES.Course}`;
+const typeRoute = `${BACKEND_API_ENDPOINT}${API_ROUTES.Type}`;
+const depratmentRoute = `${BACKEND_API_ENDPOINT}${API_ROUTES.Department}`;
+const roleRoute = `${BACKEND_API_ENDPOINT}${API_ROUTES.Role}`;
+
+//
+// ────────────────────────────────────────────────────────────────────────── I ──────────
+//   :::::: A L L   A B O U T   C O U R S E S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────────
+//
+
+
+
+module.exports.getAllCourses = () => {
+    const uri = courseRoute;
+    return Restful.get(uri);
+};
+
+module.exports.getCourse = (courseId) => {
+    const uri = `${courseRoute}/${courseId}`;
+    return Restful.get(uri);
+}
+
+module.exports.createNewCourse = (courseContent) => {
+    const uri = courseRoute;
+    return Restful.post(uri, courseContent);
+};
+
+module.exports.updateCourse = (courseId, updatingContent) => {
+    const uri = `${courseRoute}/${courseId}`;
+    return Restful.put(uri, updatingContent);
+};
+
+//
+// ────────────────────────────────────────────────────────────────────── II ──────────
+//   :::::: A L L   A B O U T   U S E R S : :  :   :    :     :        :          :
+// ────────────────────────────────────────────────────────────────────────────────
+//
+
+module.exports.authenticateUser = (username) => {
+    const uri = `${userRoute}/authenticate`;
+    let payload = {
+        id: username
+    };
+    return Restful.post(uri, payload);
+}
+
+
+/**
+ * Authenticate the user account with username and password
+ * This function will request password from backend and compare it with
+ * the inputted username and password
+ *
+ * @param {string} username user's username
+ * @param {string} password user's password
+ * @returns {Promise} A Promsie
+ * @example
+ * authenticate(user001, password001).then().catch()
+ * [then() is successed, catch() otherwise]
+ * if authenticated:
+ * return: {
+ *  username: user001,
+ *  type: Employee
+ * }
+ * 
+ * if not authenticated:
+ * return: {
+ *  message: 'Incorrect Username or Password'
+ * }
+ * or an error
+ */
+module.exports.authenticate = async (username, password) => {
+    const uri = `${userRoute}/authenticate`;
+    let payload = {
+        id: username
+    };
+    return new Promise((resolve, reject) => {
+        Restful.post(uri, payload).then((data) => {
+            if (data['user']) {
+                const user = data['user'];
+                const passFromApi = user['password'];
+                const type = user['type'];
+                // compare password
+                bcrypt.compare(password, passFromApi, (err, isValid) => {
+                    if (err) {
+                        reject(err);
+                    }
+                    if (isValid === true) {
+                        resolve({
+                            username: username,
+                            type: type['title']
+                        });
+                    } else {
+                        reject({
+                            message: 'Incorrect Username or Password'
+                        });
+                    }
+                });
+            } else {
+                reject({
+                    message: 'Incorrect Username or Password'
+                });
+            }
+        }).catch((err) => {
+            reject(err);
+        });
+    });
+}
+
+
+/**
+ * To register a new user.
+ * @param {string} dptId Department's Id (MongoDB ObjectId)
+ * @param {string} rId Role's Id (MongoDB ObjectId)
+ * @param {string} tId Type's Id (Mongo
+ * @param {string} username Login's username
+ * @param {string} password Login's password
+ * @param {string} firstname User's firstname
+ * @param {string} lastname User's lastname
+ * @param {string} email User's email
+ * @param {string} phone User's phone
+ * @return {Object} A Promise
+ * @example
+ * Succeeded:
+ *  {
+ *      message: "OK"
+ *  }
+ * //Failed:
+ *  {
+ *      message: "NO"
+ *  }
+ * Error:
+ */
+module.exports.register = async (dptId, rId, tId, username, password, firstname, lastname, email, phone) => {
+    const uri = userRoute;
+    return new Promise(async (resolve, reject) =>{
+        await bcrypt.hash(password, PASS_SALT_ROUNDS, function (err, hashPass) {
+            if(err){
+                reject(err);
+            }
+            console.log(hashPass);
+            let payload = {
+                id: username,
+                password: hashPass,
+                firstname: firstname,
+                lastname: lastname,
+                email: email,
+                phone: phone,
+                department: dptId,
+                type: tId,
+                role: rId
+            };
+            Restful.post(uri, payload).then(data => resolve(data)).catch(err => reject(err));
+        });
+    });
+}
+
+//
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── III ──────────
+//   :::::: A L L   A B O U T   R O L E S   -   D E P A R T M E N T S   -   U S E R   T Y P E S : :  :   :    :     :        :          :
+// ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+//
+
+
+/**
+ * Get all Roles
+ *
+ * @param {string} type the type of the user (Optional)
+ * @returns {Promise} A Promise Object
+ * @example
+ * getAllRoles("Employee").then().catch()
+ * 
+ * // output:
+ * {
+ *  message: "OK",
+ *  roles: [
+ *      {
+ *          _id: "5d8d9fe65e14d62f70640rwe",
+ *          title: "Designer"
+ *      },
+ *      {
+ *          _id: "5d8d9fd45e14d62f70640eeb",
+ *           title: "Developer",
+ *      }
+ *  ]
+ * }
+ */
+module.exports.getAllRoles = (type) => {
+    const uri = roleRoute;
+    if(type) {
+        return Restful.get(uri, {
+            type: type
+        });
+    } else {
+        return Restful.get(uri);
+    }
+}
+
+
+/**
+ * Get all User Types
+ *
+ * @param {string} type the type of the user (Optional)
+ * @returns {Promise} A Promise Object
+ * @example
+ * getAllTypes("Employee").then().catch()
+ * 
+ * //output:
+ * {
+ *  message: "OK",
+ *  roles: [
+ *      {
+ *          _id: "5d8d9fe65124d62f70640rwe",
+ *          title: "Employee"
+ *      },
+ *      {
+ *          _id: "5d8d9fd4109d4d62f70640eeb",
+ *           title: "Administrator",
+ *      }
+ *  ]
+ * }
+ */
+module.exports.getAllTypes = (type) => {
+    const uri = typeRoute;
+    if(type) {
+        return Restful.get(uri, {
+            type: type
+        });
+    } else {
+        return Restful.get(uri);
+    }
+}
+
+
+/**
+ * Get all deparments
+ *
+ * @param {string} type the type of the user (Optional)
+ * @returns {Promise} A Promise Object
+ * @example
+ * getAllDepartments("Employee").then().catch()
+ * 
+ * //output:
+ * {
+ *  message: "OK",
+ *  roles: [
+ *      {
+ *          _id: "148d9fe6510292f70640rwe",
+ *          title: "Human Resources"
+ *      },
+ *      {
+ *          _id: "910f9fd45e14d62f70640eeb",
+ *           title: "IT",
+ *      }
+ *  ]
+ * }
+ */
+module.exports.getAllDepartments = (type) => {
+    const uri = depratmentRoute;
+    if(type) {
+        return Restful.get(uri, {
+            type: type
+        });
+    } else {
+        return Restful.get(uri);
+    }
+}
+
+
+/**
+ * Create a new department
+ *
+ * @param {string} title department's name/title
+ * @returns A Promise
+ * @example //output
+ * {
+ *   message: 'Added',
+ *   createDpt: {
+ *    _id: '5d9468bc6c5b9b5af915f3c4',
+ *     title: 'Community',
+ *     createdAt: '2019-10-02T09:07:08.525Z',
+ *     updatedAt: '2019-10-02T09:07:08.525Z',
+ *     __v: 0
+ *   }
+ * }
+ */
+module.exports.createDepartment = (title) => {
+    const uri = `${BACKEND_API_ENDPOINT}/api/department`;
+    return Restful.post(uri, {
+        title: title
+    });
+}
+
+/**
+ * Create a new role
+ *
+ * @param {string} title role's name/title
+ * @returns A Promise
+ */
+module.exports.createRole = (title) => {
+    const uri = `${BACKEND_API_ENDPOINT}/api/role`;
+    return Restful.post(uri, {
+        title: title
+    });
+}
+
+/**
+ * Create a new type
+ *
+ * @param {string} title type's name/title
+ * @returns A Promise
+ */
+module.exports.createType = (title) => {
+    const uri = `${BACKEND_API_ENDPOINT}/api/type`;
+    return Restful.post(uri, {
+        title: title
+    });
+}</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+	<span class="copyright">
+	DocStrap Copyright © 2012-2015 The contributors to the JSDoc3 and DocStrap projects.
+	</span>
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+	
+		on Wed Oct 2nd 2019
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>

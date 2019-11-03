@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Aristotle - Home</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../public/frame/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <!-- Custom styles for this template-->
+  <link href="../../public/frame/css/sb-admin-2.min.css" rel="stylesheet">
+   <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+     <!-- dropzone CSS
+        ============================================ -->
+    <link rel="stylesheet" href="../../public/frame/vendor/dropzone/dropzone.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="../../public/frame/css/bootstrap.min.css">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="../../public/frame/css/font-awesome.min.css">
+
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="../../public/css/style_1.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="../../public/frame/css/responsive.css">
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="../../public/frame/vendor/modernizr-2.8.3.min.js"></script>
+  <style>
+    html{
+      min-width: 532px;
+      font-size: 1rem !important;
+      overflow-y: hidden;
+
+    }
+    .sidebar-dark .sidebar-heading{
+      color:rgba(255,255,255,.7);
+    }
+    .nav-link{
+     color:rgba(255,255,255,.9)!important;
+
+    }
+    .sidebar-brand{
+       font-family: 'Lobster', cursive !important;
+    }
+    .modal-footer>a>img{
+          height: 38px;
+          width: auto;
+          padding: 0;
+    }
+    .modal-body{
+      background-image: url("https://i.pinimg.com/originals/10/bc/43/10bc43d7e1ccd9109bfe7abc143e3665.gif");
+      background-position: center;
+      background-size: 62%;
+      /* background-repeat: no-repeat; */
+      color: black;
+      font-size: 20px;
+    }
+  .modal-footer{
+    background-image: url("https://i.pinimg.com/originals/10/bc/43/10bc43d7e1ccd9109bfe7abc143e3665.gif");
+      background-position: bottom;
+      border: 0;
+  }
+ /*  canvas{
+    height: 100%;
+  } */
+  .input-group{
+    left: 20px;
+  }
+  .table{
+    margin-left:  auto!important;
+    margin-right: auto;
+  }
+
+.btn-primary{
+    background-color:rgb(246, 194, 62);
+    border-color:rgb(246, 194, 62) ;   
+ }
+ #content>.container-fluid{
+  padding-left: auto;
+  padding-right:auto;
+ }
+ .fas{
+  color: #5c4f4f;
+ }
+ .card:nth-child(1){
+  margin-top: 10px
+ }
+ .table>thead>tr>th:nth-child(1){
+  padding-left: 40px;
+  padding-right: 40px;
+ }
+.table-responsive-lg , 
+.table-responsive-sm , 
+.table-responsive-md  {
+ display: inline-table;
+}
+/* @media (max-width:375px ){
+  .card:nth-child(1){
+    width:200px;
+  }
+}
+@media (min-width:768px ){
+  .card{
+    width:350px;
+  }
+}
+@media (min-width:1024px ){
+  .card{
+    width:400px;
+  }
+} */
+.pt-6-half {
+padding-top: 1.4rem;
+}
+#animate{
+  margin: 0;
+}
+.tuna {
+ /*  animation: walk-cycle 1s steps(12) infinite; */
+  background: url(https://myrealdomain.com/images/running-gif-4.gif); 
+  height: 50px;
+  width: 400px;
+  position: relative;
+  bottom: 1px;
+  left: 50%;
+  margin-left: -200px;
+  background-size: 80px;
+  background-repeat: no-repeat;
+  background-position: 50% 80%;
+  transform: translateZ(0); /* offers a bit of a performance boost by pushing some of this processing to the GPU in Safari*/
+  /* transform:scaleX(-1); */
+}
+
+/* @keyframes walk-cycle {  
+  0% {background-position: 0 0; } 
+  100% {background-position: 0 -2391px; } 
+} */
+
+.foreground, .midground, .background {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  top: 0; left: 0;
+  translate3d(0,0,0); 
+}
+
+.foreground {
+  animation: parallax_fg linear 10s infinite both;
+  background:  url(http://stash.rachelnabors.com/24ways2012/foreground_grass.png) 0 100% repeat-x;
+  z-index: 3;
+}
+
+@keyframes parallax_fg {  
+  0% { background-position: -3584px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+
+.midground {
+  animation: parallax_mg linear 20s infinite;
+  background:  url(https://fsb.zobj.net/crop.php?r=KtUsiJKhg4v888LPkOmhE_456me5mxeYeY2ms8oy4S_ttVa-WRvH3hw2khAXlsbeCJ8RmyPoEdiAt6NKhg_tQqBG89C9XnSH5CEa5eo1CNauP9PmggUTCShEwZn2Y1RQgUdiJ-_hr_ZISvjh) 0 30% repeat-x;
+  z-index: 2;
+  background-size: 80px;
+}
+
+@keyframes parallax_mg {  
+  0% { background-position: -3000px 100%;} 
+  100% {background-position: 0 100%; } 
+}
+
+.background {
+  background-image:
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain5.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain4.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain3.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain2.png),
+    url(http://stash.rachelnabors.com/24ways2012/background_mountain1.png);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  z-index: 1;
+  animation: parallax_bg linear 40s infinite;
+}
+
+@keyframes parallax_bg {
+  100% { background-position-x: 2400px, 2000px, 1800px, 1600px, 1200px;}
+}
+
+body {
+    background: linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%),
+    #d2d2d2 url(http://stash.rachelnabors.com/24ways2012/background_clouds.png);
+}
+footer{
+  padding: 0px!important;
+  color: black;
+  padding-right: 0!important;
+  padding-left: 0 !important;
+  padding-top: 0 !important;
+}
+  navbar-nav 
+  {
+    font-size: 1rem !important;
+  }
+  </style>
+
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" style="margin:0; " id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img class="img-fluid" src="https://cdn.dribbble.com/users/1551941/screenshots/4518137/aridribble.gif">
+        </div>
+        <div class="sidebar-brand-text mx-3">Aristotle<sup>1</sup></div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Nav Item - Dashboard -->
+
+      <div class="sidebar-heading">
+       HOME
+      </div>
+      <li class="nav-item">
+        <a class="nav-link" href="./admin_home.html">
+          <i class="fas fa-fw fa-home"></i>
+          <span>Homepage</span></a>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <div class="sidebar-heading">
+       ACCOUNT
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseaccount" aria-expanded="true" aria-controls="collapseaccount">
+          <i class="fas fa-users-cog"></i>
+          <span>Manage account</span>
+        </a>
+        <div id="collapseaccount" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Custom 3:</h6> -->
+            <a class="collapse-item" href="./admin_account_overview.html">overview</a>
+            <a class="collapse-item" href="./admin_account_add.html">add account</a>
+<!--             <a class="collapse-item" href="#">3)</a>
+            <a class="collapse-item" href="#">Other</a> -->
+          </div>
+        </div>
+      </li>
+       <hr class="sidebar-divider">
+
+      <div class="sidebar-heading">
+       COURSE
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecourses" aria-expanded="true" aria-controls="collapsecourses">
+          <i class="fas fa-users-cog"></i>
+          <span>Manage course</span>
+        </a>
+        <div id="collapsecourses" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Custom 3:</h6> -->
+            <a class="collapse-item" onclick="window.location.href='./admin_course_overview.html'" href="#">overview</a>
+            <a class="collapse-item" onclick="window.location.href='./admin_add_course.html'" href="#">add course</a>
+<!--             <a class="collapse-item" href="#">3)</a>
+            <a class="collapse-item" href="#">Other</a> -->
+          </div>
+        </div>
+      </li>
+ <hr class="sidebar-divider">
+
+      <div class="sidebar-heading">
+       COURSES
+      </div>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecourse" aria-expanded="true" aria-controls="collapsecourse">
+          <i class="fas fa-users-cog"></i>
+          <span>Course 1</span>
+        </a>
+        <div id="collapsecourse" class="collapse " aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Custom 3:</h6> -->
+            <a class="collapse-item" href="./admin_edit_chapter.html">chapter 1</a>
+            <a class="collapse-item" href="#">chapter 2</a>
+<!--             <a class="collapse-item" href="#">3)</a>
+            <a class="collapse-item" href="#">Other</a> -->
+          </div>
+        </div>
+      </li>
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        
+      </div>
+       <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+     
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Topbar Search -->
+          <form class="d-none  form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </li>
+<!--             <div class="topbar-divider d-none d-sm-block"></div> -->
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="../login/reset_password.html">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Reset Password
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Settings
+                </a>
+                <a class="dropdown-item" href="#">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Activity Log
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- Begin Page Content -->
+        <div class="container-fluid"> <!-- Single pro tab review Start-->
+        <div class="single-pro-review-area mt-t-30 mg-b-15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="product-payment-inner-st">
+                            <ul id="myTabedu1" class="tab-review-design">
+                                <li class="active"><a href="#description">Courses Details</a></li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content custom-product-edit">
+                                <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="review-content-section">
+                                                <div id="dropzone1" class="pro-ad addcoursepro">
+                                                    <form action="/upload" class="dropzone dropzone-custom needsclick addcourse" id="demo1-upload">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                <div class="form-group">
+                                                                    <input name="coursename" type="text" class="form-control" placeholder="Course Name">
+                                                                </div>
+                                                               
+                                                                <div class="form-group">
+                                                                    <input name="duration" type="text" class="form-control" placeholder="Course Duration">
+                                                                </div>
+                                                               <!--  
+                                                                <div class="form-group alert-up-pd">
+                                                                    <div class="dz-message needsclick download-custom"> -->
+                                                                        <!-- <i class="fa fa-download edudropnone" aria-hidden="true"></i> -->
+                                                                        <!-- <i class=" edudropnone" aria-hidden="true"></i>
+                                                                        <h2 class="edudropnone">Drop image here or click to upload.</h2>
+                                                                        <p class="edudropnone"><span class="note needsclick">(This is just a demo dropzone. Selected image is <strong>not</strong> actually uploaded.)</span>
+                                                                        </p>
+                                                                        <input name="imageico" class="hd-pro-img" type="text" />
+                                                                    </div>
+                                                                </div> -->
+                                                                 <div class="form-group">
+                                                                  <div class="from-group">Department：</div>
+                                                                    <select name="Department" class="form-control">
+                                                                    <option value="IT">IT</option>
+                                                                    <option value="DESIGN">DESIGN</option>
+                                                                    <option value="FINANCE">FINANCE</option>
+                                                                    <option value="MANAGEMENT">MANAGEMENT</option>
+                                                                  </select> 
+                                                                                            
+                                                           
+                                                                <!-- <div class="form-group res-mg-t-15">
+                                                                    <input name="department" type="text" class="form-control" placeholder="Department">
+                                                                </div> -->
+                                                              </div>
+                                                              </div>
+                                                               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"> 
+                                                                <div class="form-group">
+                                                                    <textarea name="description" placeholder="Description"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                      
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <div class="payment-adress">
+                                                                    <button type="submit" class="btn btn-primary " onclick="window.location.href='./admin_course_overview.html'">Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+          </div> 
+        </div>
+          
+            
+        
+          
+
+    
+    
+        <!-- End of Topbar -->
+
+        
+      <!-- Footer -->
+     
+      <footer class="sticky-footer bg-white">
+        <div class="row" id="animate">
+           <div class="foreground"></div>
+
+        <div class="midground">
+          <div class="tuna"></div>
+          <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Your Website 2019</span>
+          </div>
+        </div>
+          
+        </div>
+
+        <div class="background">
+        </div>
+   
+        
+         </div>
+      </footer>
+      <!-- End of Footer -->
+ 
+
+
+    <!-- End of Content Wrapper -->
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">LOG OFF SYSTEM</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="../login/login.html">Logout</a>
+          <!-- <a ><img class="img-thumbnail" src="https://gifimage.net/wp-content/uploads/2018/11/log-out-gif-3.gif"></a> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="../../public/frame/vendor/jquery/jquery.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="../../public/frame/js/sb-admin-2.min.js"></script>
+  <script src="../../public/frame/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="../../public/frame/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  
+<!-- jquery
+        ============================================ -->
+    <!-- <script src="../../public/frame/vendor/modernizr/jquery-1.12.4.min.js"></script> -->
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="../../public/frame/vendor/bootstrap/js/bootstrap.min.js"></script>
+     <!-- dropzone JS
+        ============================================ -->
+    <!-- <script src="../../public/frame/js/dropzone/dropzone.js"></script> -->
+    <!-- wow JS
+        ============================================ -->
+    <script src="../../public/frame/js/wow.min.js"></script>
+  
+<!--     maskedinput JS
+        ============================================ -->
+    <script src="../../public/js/jquery.maskedinput.min.js"></script>
+    <script src="../../public/js/masking-active.js"></script> 
+      <!-- tab JS
+        ============================================ -->
+    <script src="../../public/frame/js/tab.js"></script>
+    <!-- form validate JS
+        ============================================ -->
+    <script src="../../public/frame/js/form-validation/jquery.form.min.js"></script>
+    <script src="../../public/frame/js/form-validation/jquery.validate.min.js"></script>
+    <script src="../../public/frame/js/form-validation/form-active.js"></script>
+    
+    <!-- plugins JS
+        ============================================ -->
+    <script src="../../public/frame/js/plugins.js"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="../../public/frame/js/main.js"></script>
+  <script>
+  const $tableID = $('#table');
+ const $BTN = $('#export-btn');
+ const $EXPORT = $('#export');
+ 
+ const newTr = `
+<tr class="hide">
+  <td class="pt-3-half" contenteditable="true">enter couse n</td>
+   
+   <td class="pt-3-half">
+    <span class="table-up"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-up" aria-hidden="true"></i></a></span>
+    <span class="table-down"><a href="#!" class="indigo-text"><i class="fas fa-long-arrow-alt-down" aria-hidden="true"></i></a></span>
+  </td>
+  <td>
+  <span class="" href=""><button type="button"
+      class="btn btn-info btn-rounded btn-sm my-0" onclick="window.location.href='./admin_add_chapter.html'" >Edit</button></span>
+  </td>
+  <td>
+    <span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0 waves-effect waves-light">Remove</button></span>
+  </td>
+</tr>`;
+
+ $('.table-add').on('click', 'i', () => {
+
+   const $clone = $tableID.find('tbody tr').last().clone(true).removeClass('hide table-line');
+
+   if ($tableID.find('tbody tr').length === 0) {
+
+     $('tbody').append(newTr);
+   }
+
+   $tableID.find('table').append($clone);
+ });
+
+ $tableID.on('click', '.table-remove', function () {
+
+   $(this).parents('tr').detach();
+ });
+
+ $tableID.on('click', '.table-up', function () {
+
+   const $row = $(this).parents('tr');
+
+   if ($row.index() === 1) {
+     return;
+   }
+
+   $row.prev().before($row.get(0));
+ });
+
+ $tableID.on('click', '.table-down', function () {
+
+   const $row = $(this).parents('tr');
+   $row.next().after($row.get(0));
+ });
+
+ // A few jQuery helpers for exporting only
+ jQuery.fn.pop = [].pop;
+ jQuery.fn.shift = [].shift;
+
+ $BTN.on('click', () => {
+
+   const $rows = $tableID.find('tr:not(:hidden)');
+   const headers = [];
+   const data = [];
+
+   // Get the headers (add special header logic here)
+   $($rows.shift()).find('th:not(:empty)').each(function () {
+
+     headers.push($(this).text().toLowerCase());
+   });
+
+   // Turn all existing rows into a loopable array
+   $rows.each(function () {
+     const $td = $(this).find('td');
+     const h = {};
+
+     // Use the headers from earlier to name our hash keys
+     headers.forEach((header, i) => {
+
+       h[header] = $td.eq(i).text();
+     });
+
+     data.push(h);
+   });
+
+   // Output the result
+   $EXPORT.text(JSON.stringify(data));
+ });
+var doc = new jsPDF();
+var specialElementHandlers = {
+    '#editor': function (element, renderer) {
+        return true;
+    }
+};
+
+$('#cmd').click(function () {
+    doc.fromHTML($('#content').html(), 15, 15, {
+        'width': 170,
+            'elementHandlers': specialElementHandlers
+    });
+    doc.save('sample-file.pdf');
+});
+
+
+  </script>
+
+
+</body>
+
+</html>
