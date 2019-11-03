@@ -1,0 +1,22 @@
+{
+  "name": "server-api",
+  "version": "1.0.0",
+  "description": "backend api for Aristotle",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.cs.adelaide.edu.au/a1711830/2019-S2-SEP-PG3"
+  },
+  "keywords": [
+    "training",
+    "system"
+  ],
+  "author": "PG3",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
